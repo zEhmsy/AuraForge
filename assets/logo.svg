@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <!-- RGB neon gradients (Aura) -->
+    <linearGradient id="neonLeft" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="100%" stop-color="#7000FF" />
+    </linearGradient>
+    
+    <linearGradient id="neonRight" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FF0055" />
+      <stop offset="100%" stop-color="#7000FF" />
+    </linearGradient>
+
+    <!-- Center spark gradient (Forge) -->
+    <linearGradient id="forgeSpark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF500" />
+      <stop offset="100%" stop-color="#FF5500" />
+    </linearGradient>
+
+    <!-- Metallic background -->
+    <linearGradient id="basePlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1E26" />
+      <stop offset="100%" stop-color="#0A0A0F" />
+    </linearGradient>
+
+    <!-- Glow filters for the light effect -->
+    <filter id="neonGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    
+    <filter id="sparkGlow">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background (rounded squircle) -->
+  <rect x="16" y="16" width="224" height="224" rx="48" fill="url(#basePlate)" />
+  
+  <!-- Thin inner border for depth -->
+  <rect x="16" y="16" width="224" height="224" rx="48" fill="none" stroke="#2D2D3D" stroke-width="2" />
+
+  <!-- Forge base / minimal anvil (shaded) -->
+  <path d="M 64 192 L 192 192 C 204 192 208 180 196 172 L 176 158 L 80 158 L 60 172 C 48 180 52 192 64 192 Z" fill="#14141A" stroke="#252533" stroke-width="2" stroke-linejoin="round" />
+
+  <!-- Neon letter 'A' -->
+  <!-- Crossbar (behind) -->
+  <path d="M 96 130 L 160 130" fill="none" stroke="#7000FF" stroke-width="20" stroke-linecap="round" filter="url(#neonGlow)" />
+
+  <!-- Left leg (cyan -> violet) -->
+  <path d="M 128 55 L 64 170" fill="none" stroke="url(#neonLeft)" stroke-width="20" stroke-linecap="round" filter="url(#neonGlow)" />
+  
+  <!-- Right leg (pink -> violet) -->
+  <path d="M 128 55 L 192 170" fill="none" stroke="url(#neonRight)" stroke-width="20" stroke-linecap="round" filter="url(#neonGlow)" />
+
+  <!-- Forge spark (processing core) -->
+  <circle cx="128" cy="130" r="14" fill="url(#forgeSpark)" filter="url(#sparkGlow)" />
+  <circle cx="128" cy="130" r="6" fill="#FFFFFF" />
+  
+  <!-- Glowing apex -->
+  <circle cx="128" cy="55" r="10" fill="#FFFFFF" filter="url(#sparkGlow)" />
+</svg>

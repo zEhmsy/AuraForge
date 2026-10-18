@@ -1,0 +1,5 @@
+/target
+*.log
+dry.txt
+# Temporary hardware probe, not part of the app
+/examples/press_probe.rs

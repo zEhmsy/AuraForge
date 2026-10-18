@@ -1,0 +1,57 @@
+[package]
+name = "auraforge"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "AuraForge: ambilight daemon for the Drevo Tyrfing V2 keyboard"
+autobins = false
+
+
+[[bin]]
+
+name = "AuraForge"
+path = "src/bin/tray.rs"
+
+
+[[bin]]
+
+name = "auraforge-cli"
+path = "src/main.rs"
+
+[dependencies]
+ctrlc = "3.4"
+hidapi = "2.6"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[build-dependencies]
+
+embed-resource = "3"
+resvg = "0.45"
+
+
+[dependencies.windows]
+version = "0.62"
+features = [
+    "Win32_Devices_HumanInterfaceDevice",
+    "Win32_Foundation",
+    "Win32_Graphics_Direct3D",
+    "Win32_Graphics_Direct3D11",
+    "Win32_Graphics_Dxgi",
+    "Win32_Graphics_Dxgi_Common",
+    "Win32_Graphics_Gdi",
+    "Win32_Networking_WinHttp",
+    "Win32_Security",
+    "Win32_Storage_FileSystem",
+    "Win32_System_IO",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Registry",
+    "Win32_System_Threading",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+]
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
